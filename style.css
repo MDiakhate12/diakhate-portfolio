@@ -712,6 +712,53 @@ a.contact-card:hover { border-color: var(--accent); transform: translateY(-4px);
 .contact-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* ============================================
+   Contact form
+   ============================================ */
+.contact-form {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  max-width: 640px;
+}
+.contact-form-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 1rem; }
+.form-field label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.form-field input,
+.form-field textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  resize: vertical;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+.form-footer { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.form-status { font-size: 0.85rem; color: var(--text-muted); }
+.form-status-success { color: #3ecf6a; }
+.form-status-error { color: var(--accent-light); }
+
+/* ============================================
    Footer
    ============================================ */
 .site-footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
@@ -783,6 +830,7 @@ a.contact-card:hover { border-color: var(--accent); transform: translateY(-4px);
   .cert-card { flex-direction: column; text-align: center; }
   .contact-grid { grid-template-columns: 1fr; }
   .tl-item { grid-template-columns: 14px 1fr; gap: 1rem; }
+  .form-row { grid-template-columns: 1fr; }
   .tl-content { padding: 1.4rem 1.25rem; }
   .tl-date { font-size: 0.75rem; }
   .hero-actions .btn { flex: 1; justify-content: center; }

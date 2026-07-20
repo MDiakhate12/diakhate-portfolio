@@ -1,0 +1,8 @@
+{
+  "name": "diakhate-portfolio",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}

@@ -120,4 +120,57 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  /* Contact form -> /api/contact (Resend) */
+  var contactForm = document.getElementById('contactForm');
+  var cfSubmit = document.getElementById('cfSubmit');
+  var cfStatus = document.getElementById('cfStatus');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var formData = new FormData(contactForm);
+      var payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        company: formData.get('company')
+      };
+
+      cfSubmit.disabled = true;
+      cfSubmit.textContent = 'Sending...';
+      cfStatus.textContent = '';
+      cfStatus.className = 'form-status';
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data.ok) {
+            cfStatus.textContent = "Message sent — I'll get back to you soon.";
+            cfStatus.className = 'form-status form-status-success';
+            contactForm.reset();
+          } else {
+            cfStatus.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+            cfStatus.className = 'form-status form-status-error';
+          }
+        })
+        .catch(function () {
+          cfStatus.textContent = 'Network error. Please try again in a moment.';
+          cfStatus.className = 'form-status form-status-error';
+        })
+        .finally(function () {
+          cfSubmit.disabled = false;
+          cfSubmit.textContent = 'Send message';
+        });
+    });
+  }
 })();
