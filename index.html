@@ -132,7 +132,7 @@
           </div>
           <div class="about-card-row">
             <span class="about-card-label">Languages</span>
-            <span class="about-card-value">French (native), English (fluent)</span>
+            <span class="about-card-value">French (native),<br>English (fluent)</span>
           </div>
           <div class="about-card-row">
             <span class="about-card-label">Focus</span>
@@ -511,20 +511,20 @@
         Reach out directly, or grab a copy of my CV below.
       </p>
       <div class="contact-grid">
-        <a href="mailto:mouhammad.diakhate12@gmail.com" class="contact-card reveal">
+        <a href="mailto:mouhammad.diakhate12@gmail.com" class="contact-card reveal" id="emailCard">
           <span class="contact-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
           </span>
           <span class="contact-label">Email</span>
-          <span class="contact-value">mouhammad.diakhate12@gmail.com</span>
+          <span class="contact-value" id="emailValue">mouhammad.diakhate12@gmail.com</span>
         </a>
-        <a href="tel:+33651926862" class="contact-card reveal">
+        <button type="button" class="contact-card contact-card-btn reveal" id="phoneCard" data-phone-enc="KzMzIDYgNTEgOTIgNjggNjI=" aria-label="Reveal phone number">
           <span class="contact-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </span>
           <span class="contact-label">Phone</span>
-          <span class="contact-value">+33 6 51 92 68 62</span>
-        </a>
+          <span class="contact-value contact-value-mask" id="phoneValue">Tap to reveal</span>
+        </button>
         <div class="contact-card">
           <span class="contact-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -537,11 +537,11 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg>
           </span>
           <span class="contact-label">Languages</span>
-          <span class="contact-value">French (native), English (fluent)</span>
+          <span class="contact-value">French (native),<br>English (fluent)</span>
         </div>
       </div>
       <div class="contact-cta reveal">
-        <a href="mailto:mouhammad.diakhate12@gmail.com" class="btn btn-primary">Send an email</a>
+        <a href="mailto:mouhammad.diakhate12@gmail.com" class="btn btn-primary" id="ctaEmailBtn">Send an email</a>
         <a href="assets/Mouhammad_DIAKHATE_CV.pdf" class="btn btn-outline" download>Download CV</a>
       </div>
 

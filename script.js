@@ -121,6 +121,54 @@
     });
   }
 
+  /* Phone number: hidden from source, revealed on click, second click calls */
+  var phoneCard = document.getElementById('phoneCard');
+  var phoneValue = document.getElementById('phoneValue');
+  if (phoneCard && phoneValue) {
+    phoneCard.addEventListener('click', function () {
+      if (phoneCard.classList.contains('is-revealed')) {
+        window.location.href = 'tel:' + phoneCard.dataset.tel;
+        return;
+      }
+      var decoded = atob(phoneCard.getAttribute('data-phone-enc'));
+      phoneValue.textContent = decoded;
+      phoneValue.classList.remove('contact-value-mask');
+      phoneCard.classList.add('is-revealed');
+      phoneCard.dataset.tel = decoded.replace(/\s+/g, '');
+      phoneCard.setAttribute('aria-label', 'Call ' + decoded);
+    });
+  }
+
+  /* Email: copy to clipboard + visible confirmation, on top of the mailto: link */
+  function wireEmailCopy(el, valueEl, activeLabel, idleLabel, duration) {
+    if (!el) return;
+    el.addEventListener('click', function () {
+      var email = el.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+      navigator.clipboard.writeText(email).then(function () {
+        if (!valueEl) return;
+        var original = valueEl.textContent;
+        valueEl.textContent = activeLabel;
+        valueEl.classList.add('copied');
+        window.setTimeout(function () {
+          valueEl.textContent = idleLabel || original;
+          valueEl.classList.remove('copied');
+        }, duration || 1800);
+      }).catch(function () {});
+    });
+  }
+  wireEmailCopy(
+    document.getElementById('emailCard'),
+    document.getElementById('emailValue'),
+    'Copied to clipboard ✓'
+  );
+  wireEmailCopy(
+    document.getElementById('ctaEmailBtn'),
+    document.getElementById('ctaEmailBtn'),
+    'Copied ✓ opening mail…',
+    'Send an email'
+  );
+
   /* Contact form -> /api/contact (Resend) */
   var contactForm = document.getElementById('contactForm');
   var cfSubmit = document.getElementById('cfSubmit');

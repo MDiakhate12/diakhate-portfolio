@@ -709,7 +709,41 @@ a.contact-card:hover { border-color: var(--accent); transform: translateY(-4px);
   color: var(--text-muted);
 }
 .contact-value { font-size: 0.9rem; font-weight: 500; word-break: break-word; }
+.contact-value.copied { color: var(--accent-light); }
 .contact-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.contact-card-btn {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: left;
+  background: var(--surface);
+  appearance: none;
+  cursor: pointer;
+  width: 100%;
+}
+.contact-card-btn:hover { border-color: var(--accent); transform: translateY(-4px); }
+.contact-card-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.contact-value-mask {
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.contact-value-mask::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 8px 0 0 var(--accent-dim), 16px 0 0 var(--accent-dim);
+  opacity: 0.8;
+}
+.contact-card-btn.is-revealed .contact-value {
+  font-family: var(--font-mono);
+  color: var(--accent-light);
+}
 
 /* ============================================
    Contact form
